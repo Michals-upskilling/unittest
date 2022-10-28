@@ -33,7 +33,7 @@ Practise writting python UT using unittest module.
     - python -m flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --exclude=venv
     - python -m unittest discover -v
     - coverage run -m unittest discover
-    - coverage report --fail-under=100 --omit=tests/*
+    - coverage report --fail-under=100 --omit=tests/* # For ZSH use: coverage report --fail-under=100 --omit=tests/\*
 
 6. Push your branch / create pull request
 
