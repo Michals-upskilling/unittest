@@ -1,0 +1,37 @@
+name: UnitTest testing
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python --version  # For debugging
+          pip install virtualenv
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Lint with flake8
+        run: |
+          source venv/bin/activate
+          # stop the build if there are Python syntax errors or undefined names
+          python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=venv
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          python -m flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --exclude=venv
+      - name: Test with unittest
+        run: |
+          source venv/bin/activate
+          python -m unittest discover -v
+          coverage run -m unittest discover
+          coverage report --fail-under=100 --omit=tests/*
+          

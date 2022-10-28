@@ -1,0 +1,5 @@
+requests
+coverage
+mock
+black
+flake8
