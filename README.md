@@ -9,11 +9,7 @@ Practise writting python UT using unittest module.
 
 1. Clone git repo.
 
-    git clone git@git.epam.com:<your_login>/unittest-excercises.git
-
-    e.g.
-
-    git clone git@git.epam.com:michal_batyra/unittest-excercises.git
+    git clone https://github.com/Michals-upskilling/unittest.git
 
 2. Create a feature branch
 
@@ -27,22 +23,22 @@ Practise writting python UT using unittest module.
 
 4. Code python UT using unittest module.
 
-5. Create virtual environment:
+5. Test your changes locally: 
     - python --version  # 3.X
     - pip install virtualenv
     - python -m venv venv
     - source venv/bin/activate
     - pip install -r requirements.txt
-
-6. Verify the following commands will passed localy:
+    - python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=venv
+    - python -m flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --exclude=venv
     - python -m unittest discover -v
     - coverage run -m unittest discover
     - coverage report --fail-under=100 --omit=tests/*
 
-7. Push your branch / create merge request
+6. Push your branch / create pull request
 
-    https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html
+    https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/working-with-your-remote-repository-on-github-or-github-enterprise/creating-an-issue-or-pull-request
 
-8. Repeat steps 4-7 until CI/CD pipeline finish successfully.
+7. Repeat steps 4-6 until CI pipeline finish successfully.
 
 # Good luck!
